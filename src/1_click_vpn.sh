@@ -3,18 +3,19 @@
 first_api="https://1clickvpn.net/api/v1"
 second_api="https://api.1clickvpn.net/api/v1"
 token=null
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
 
 function get_servers() {
 	curl --request GET \
 		--url "$first_api/servers" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json"
 }
 
 function get_current_ip() {
 	curl --request GET \
 		--url "$second_api/checks/ip" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json"
 }
 
@@ -23,7 +24,7 @@ function sign_in() {
 	# 2 - password: (string): <password>
 	response=$(curl --request POST \
 		--url "$second_api/auth/signin" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"email": "'$1'",
@@ -40,7 +41,7 @@ function sign_up() {
 	# 2 - password: (string): <password>
 	curl --request POST \
 		--url "$second_api/auth/signup" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"email": "'$1'",
@@ -54,7 +55,7 @@ function change_password() {
 	# 1 - new_password: (string): <new_password>
 	curl --request POST \
 		--url "$second_api/auth/signup" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "cookie: token=$token" \
 		--data '{
