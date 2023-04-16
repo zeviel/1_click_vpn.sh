@@ -3,6 +3,6 @@ Web-API for [1clickVPN](https://1clickvpn.net) an vpn that gives you the freedom
 
 ## Example
 ```bash
-source 1_click_vpn.sh
+source ./1_click_vpn.sh
 sign_in "email" "password"
 ```
